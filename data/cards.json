@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Knife Juggler",
+    "manaCost": 3,
+    "attack": 3,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Knife Juggler",
+    "manaCost": 3,
+    "attack": 3,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Goldshire Footman",
+    "manaCost": 1,
+    "attack": 1,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Goldshire Footman",
+    "manaCost": 1,
+    "attack": 1,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Fireball",
+    "manaCost": 4,
+    "attack": null,
+    "life": null,
+    "cardType": "spell",
+    "damage": 6
+  }
+]
