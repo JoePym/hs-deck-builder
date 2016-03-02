@@ -34,11 +34,11 @@ instance ToJSON Card
 getJSON :: IO B.ByteString
 getJSON = B.readFile jsonFile
 
-baseScore :: (Maybe Int, Maybe Int, Maybe Int ,Int) -> Float
-baseScore (Just damage, Nothing, Nothing, manaCost) = fromIntegral damage/ fromIntegral manaCost
-baseScore (Nothing, Just attack, Just life, manaCost) = fromIntegral attack / fromIntegral manaCost
+baseScore :: (Maybe Int, Maybe Int, Maybe Int ,Int) -> Int
+baseScore (Just damage, Nothing, Nothing, manaCost) = damage - manaCost
+baseScore (Nothing, Just attack, Just life, manaCost) = (attack + life) - 2*manaCost
 
-evaluateCard :: Card -> Float
+evaluateCard :: Card -> Int
 evaluateCard card = baseScore(damage card, attack card, life card, manaCost card)
 
 sortCard :: Card -> Card -> Ordering
@@ -49,7 +49,7 @@ sortCard c1 c2
 
 buildDeck :: (Collection, Deck) -> Deck
 buildDeck ([], _) = []
-buildDeck (collection, deck) = Data.List.take 3 (sortBy sortCard collection)
+buildDeck (collection, deck) = Data.List.take 20 (sortBy sortCard collection)
 
 selectGreaterThanFour collection = collection
 

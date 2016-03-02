@@ -1,5 +1,261 @@
 [
   {
+    "name": "Ironbark Protector",
+    "manaCost": 8,
+    "attack": 8,
+    "life": 8,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Lord of the Arena",
+    "manaCost": 6,
+    "attack": 6,
+    "life": 5,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Lord of the Arena",
+    "manaCost": 6,
+    "attack": 6,
+    "life": 5,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Boulderfist Ogre",
+    "manaCost": 6,
+    "attack": 6,
+    "life": 7,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Boulderfist Ogre",
+    "manaCost": 6,
+    "attack": 6,
+    "life": 7,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Sen'jin Shieldmasta",
+    "manaCost": 4,
+    "attack": 3,
+    "life": 5,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Sen'jin Shieldmasta",
+    "manaCost": 4,
+    "attack": 3,
+    "life": 5,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "River Crocolisk",
+    "manaCost": 3,
+    "attack": 2,
+    "life": 3,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "River Crocolisk",
+    "manaCost": 3,
+    "attack": 2,
+    "life": 3,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Stonetusk Boar",
+    "manaCost": 3,
+    "attack": 1,
+    "life": 1,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Stonetusk Boar",
+    "manaCost": 3,
+    "attack": 1,
+    "life": 1,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Jungle Panther",
+    "manaCost": 3,
+    "attack": 4,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Jungle Panther",
+    "manaCost": 3,
+    "attack": 4,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Worgen Infiltrator",
+    "manaCost": 1,
+    "attack": 2,
+    "life": 1,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Worgen Infiltrator",
+    "manaCost": 1,
+    "attack": 2,
+    "life": 1,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Wisp",
+    "manaCost": 0,
+    "attack": 1,
+    "life": 1,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Wisp",
+    "manaCost": 0,
+    "attack": 1,
+    "life": 1,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Bloodfen Raptor",
+    "manaCost": 2,
+    "attack": 3,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Bloodfen Raptor",
+    "manaCost": 2,
+    "attack": 3,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Core Hound",
+    "manaCost": 7,
+    "attack": 9,
+    "life": 5,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Core Hound",
+    "manaCost": 7,
+    "attack": 9,
+    "life": 5,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Oasis Snapjaw",
+    "manaCost": 4,
+    "attack": 2,
+    "life": 7,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Oasis Snapjaw",
+    "manaCost": 4,
+    "attack": 2,
+    "life": 7,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Chillwind Yeti",
+    "manaCost": 4,
+    "attack": 4,
+    "life": 5,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Chillwind Yeti",
+    "manaCost": 4,
+    "attack": 4,
+    "life": 5,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "War Golem",
+    "manaCost": 7,
+    "attack": 7,
+    "life": 7,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "War Golem",
+    "manaCost": 7,
+    "attack": 7,
+    "life": 7,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Magma Rager",
+    "manaCost": 3,
+    "attack": 5,
+    "life": 1,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Magma Rager",
+    "manaCost": 3,
+    "attack": 5,
+    "life": 1,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Bear",
+    "manaCost": 2,
+    "attack": 2,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Bear",
+    "manaCost": 2,
+    "attack": 2,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Bear",
+    "manaCost": 3,
+    "attack": 2,
+    "life": 2,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
     "name": "Knife Juggler",
     "manaCost": 3,
     "attack": 3,
@@ -24,12 +280,36 @@
     "damage": null
   },
   {
+    "name": "Shieldbearer",
+    "manaCost": 1,
+    "attack": 0,
+    "life": 4,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
+    "name": "Shieldbearer",
+    "manaCost": 1,
+    "attack": 0,
+    "life": 4,
+    "cardType": "minion",
+    "damage": null
+  },
+  {
     "name": "Goldshire Footman",
     "manaCost": 1,
     "attack": 1,
     "life": 2,
     "cardType": "minion",
     "damage": null
+  },
+  {
+    "name": "Fireball",
+    "manaCost": 4,
+    "attack": null,
+    "life": null,
+    "cardType": "spell",
+    "damage": 6
   },
   {
     "name": "Fireball",
