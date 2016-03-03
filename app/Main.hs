@@ -5,8 +5,8 @@ module Main where
 
 import Lib
 import Data.Aeson
-import Data.Text
 import Data.List
+import Debug.Trace
 import Control.Applicative
 import Control.Monad
 import qualified Data.ByteString.Lazy as B
@@ -23,6 +23,12 @@ data Card = Card { name :: String,
                   } deriving (Show,Generic)
 
 type Deck = [Card]
+data AvailableMana = AvailableMana Int deriving (Ord, Eq, Show)
+
+instance Bounded AvailableMana where
+  minBound = AvailableMana 0
+  maxBound = AvailableMana 10
+
 type Collection = [Card]
 
 jsonFile :: FilePath
@@ -38,20 +44,27 @@ baseScore :: (Maybe Int, Maybe Int, Maybe Int ,Int) -> Int
 baseScore (Just damage, Nothing, Nothing, manaCost) = damage - manaCost
 baseScore (Nothing, Just attack, Just life, manaCost) = (attack + life) - 2*manaCost
 
-evaluateCard :: Card -> Int
-evaluateCard card = baseScore(damage card, attack card, life card, manaCost card)
+evaluateCard :: Int -> Card -> Int
+evaluateCard mana card =
+  if mana >= manaCost card
+    then baseScore (damage card, attack card, life card, manaCost card)
+    else -100
 
-sortCard :: Card -> Card -> Ordering
-sortCard c1 c2
-  | evaluateCard c1 < evaluateCard c2 = GT
-  | evaluateCard c1 > evaluateCard c2 = LT
-  | evaluateCard c1 == evaluateCard c2 = EQ
+withMana :: Int -> Card -> (Int, Card)
+withMana mana card = (mana, card)
+
+sortCollectionForMana :: Int -> Collection -> [(Int, Card)]
+sortCollectionForMana mana collection = sortBy sortCard (map (withMana mana) collection)
+
+sortCard :: (Int, Card) -> (Int, Card) -> Ordering
+sortCard (m1,c1) (m2,c2)
+  | evaluateCard m1 c1 < evaluateCard m2 c2 = LT
+  | evaluateCard m1 c1 > evaluateCard m2 c2 = GT
+  | evaluateCard m1 c1 == evaluateCard m2 c2 = EQ
 
 buildDeck :: (Collection, Deck) -> Deck
 buildDeck ([], _) = []
-buildDeck (collection, deck) = Data.List.take 20 (sortBy sortCard collection)
-
-selectGreaterThanFour collection = collection
+buildDeck (collection, deck) = take 20 (reverse (map snd (sortCollectionForMana 3 collection)))
 
 main :: IO ()
 main = do
