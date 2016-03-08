@@ -23,7 +23,11 @@ data Card = Card { name :: String,
                   } deriving (Show,Generic)
 
 type Deck = [Card]
+type CardWithCost = (Int, Card)
+type ZippedCurve = [(Int, [Card])]
 data AvailableMana = AvailableMana Int deriving (Ord, Eq, Show)
+manaCurve = [1,2,3,4,5,6,7,8,9,10]
+manaCurveQuantities = [4,6,6,4,4,4,0,0,0,2]
 
 instance Bounded AvailableMana where
   minBound = AvailableMana 0
@@ -50,21 +54,35 @@ evaluateCard mana card =
     then baseScore (damage card, attack card, life card, manaCost card)
     else -100
 
-withMana :: Int -> Card -> (Int, Card)
+withMana :: Int -> Card -> CardWithCost
 withMana mana card = (mana, card)
 
-sortCollectionForMana :: Int -> Collection -> [(Int, Card)]
+sortCollectionForMana :: Int -> Collection -> [CardWithCost]
 sortCollectionForMana mana collection = sortBy sortCard (map (withMana mana) collection)
 
-sortCard :: (Int, Card) -> (Int, Card) -> Ordering
+sortCard :: CardWithCost -> CardWithCost -> Ordering
 sortCard (m1,c1) (m2,c2)
   | evaluateCard m1 c1 < evaluateCard m2 c2 = LT
   | evaluateCard m1 c1 > evaluateCard m2 c2 = GT
   | evaluateCard m1 c1 == evaluateCard m2 c2 = EQ
 
-buildDeck :: (Collection, Deck) -> Deck
-buildDeck ([], _) = []
-buildDeck (collection, deck) = take 20 (reverse (map snd (sortCollectionForMana 3 collection)))
+createCurve :: Collection -> [[Card]]
+createCurve collection =  map (removeManaCost) [ sortCollectionForMana mana collection | mana <- manaCurve ]
+
+removeManaCost :: [CardWithCost] -> [Card]
+removeManaCost list = map (snd) list
+
+zipCurve :: [[Card]] -> ZippedCurve
+zipCurve curve = zip manaCurveQuantities curve
+
+applyCurve :: ZippedCurve -> Deck
+applyCurve list = concat [ take quantity cards | (quantity, cards) <- list]
+
+buildDeck :: Collection -> Deck
+buildDeck [] = []
+buildDeck collection = applyCurve (zipCurve (createCurve collection))
+--buildDeck (collection, deck) = take 20 (reverse (map snd (sortCollectionForMana 3 collection)))
+
 
 main :: IO ()
 main = do
@@ -76,5 +94,5 @@ main = do
  -- our choice. In this case, just print it.
  case d of
   Left err -> putStrLn err
-  Right collection -> print (buildDeck (collection, []))
+  Right collection -> print (buildDeck collection)
 
