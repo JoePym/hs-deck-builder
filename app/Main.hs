@@ -29,10 +29,6 @@ data AvailableMana = AvailableMana Int deriving (Ord, Eq, Show)
 manaCurve = [1,2,3,4,5,6,7,8,9,10]
 manaCurveQuantities = [4,6,6,4,4,4,0,0,0,2]
 
-instance Bounded AvailableMana where
-  minBound = AvailableMana 0
-  maxBound = AvailableMana 10
-
 type Collection = [Card]
 
 jsonFile :: FilePath
@@ -45,8 +41,8 @@ getJSON :: IO B.ByteString
 getJSON = B.readFile jsonFile
 
 baseScore :: (Maybe Int, Maybe Int, Maybe Int ,Int) -> Int
-baseScore (Just damage, Nothing, Nothing, manaCost) = damage - manaCost
-baseScore (Nothing, Just attack, Just life, manaCost) = (attack + life) - 2*manaCost
+baseScore (Just damage, Nothing, Nothing, manaCost) = damage
+baseScore (Nothing, Just attack, Just life, manaCost) = (attack + life)
 
 evaluateCard :: Int -> Card -> Int
 evaluateCard mana card =
@@ -62,8 +58,8 @@ sortCollectionForMana mana collection = sortBy sortCard (map (withMana mana) col
 
 sortCard :: CardWithCost -> CardWithCost -> Ordering
 sortCard (m1,c1) (m2,c2)
-  | evaluateCard m1 c1 < evaluateCard m2 c2 = LT
-  | evaluateCard m1 c1 > evaluateCard m2 c2 = GT
+  | evaluateCard m1 c1 < evaluateCard m2 c2 = GT
+  | evaluateCard m1 c1 > evaluateCard m2 c2 = LT
   | evaluateCard m1 c1 == evaluateCard m2 c2 = EQ
 
 createCurve :: Collection -> [[Card]]
@@ -81,7 +77,6 @@ applyCurve list = concat [ take quantity cards | (quantity, cards) <- list]
 buildDeck :: Collection -> Deck
 buildDeck [] = []
 buildDeck collection = applyCurve (zipCurve (createCurve collection))
---buildDeck (collection, deck) = take 20 (reverse (map snd (sortCollectionForMana 3 collection)))
 
 
 main :: IO ()
@@ -94,5 +89,5 @@ main = do
  -- our choice. In this case, just print it.
  case d of
   Left err -> putStrLn err
-  Right collection -> print (buildDeck collection)
+  Right collection -> print (map name (buildDeck collection))
 
